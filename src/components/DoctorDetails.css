@@ -1,0 +1,23 @@
+/* DoctorDetails.css */
+.doctor-details-page {
+  padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.doctor-card-container {
+  margin-top: 20px;
+
+  padding: 20px;
+  border-radius: 8px;
+}
+
+/* Add this to your existing AppointmentForm.css */
+.top-section {
+  margin-bottom: 20px;
+}
+
+.doctor-card-wrapper {
+  max-width: 600px;
+  margin: 0 auto;
+}
