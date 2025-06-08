@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import "./DoctorCard.css"; // optional for styling
 import { useNavigate } from "react-router-dom";
+import Loader from "./Loader"; // import the loader component
 
 export default function DoctorCard({ doctor }) {
   const navigate = useNavigate();
+  const [imageLoaded, setImageLoaded] = useState(false);
+
   if (!doctor) return null;
 
   const renderStars = (rating) => {
@@ -54,16 +57,22 @@ export default function DoctorCard({ doctor }) {
         <strong>Phone:</strong>{" "}
         <a href={`tel:${doctor.phone}`}>{doctor.phone}</a>
       </p>
+
+
+      {!imageLoaded && <Loader />}
       <img
-        src={`${doctor?.doctorImage}`}
-        alt={doctor?.name}
+        src={doctor.doctorImage}
+        alt={doctor.name}
         style={{
+          display: imageLoaded ? "block" : "none",
           width: "150px",
           height: "150px",
           objectFit: "cover",
           borderRadius: "8px",
         }}
+        onLoad={() => setImageLoaded(true)}
       />
+
       <p>
         {renderStars(doctor.rating)} ({doctor.rating} / 5)
       </p>
